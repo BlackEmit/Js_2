@@ -1,4 +1,4 @@
-//   Создать объект, описывающий автомобиль (производитель,
+﻿//   Создать объект, описывающий автомобиль (производитель,
 //         модель, год выпуска, средняя скорость), и следующие функции
 //         для работы с этим объектом.
 //         1. Функция для вывода на экран информации об автомобиле.
@@ -32,20 +32,75 @@
 // 4. Функция деления 2-х объектов-дробей.
 // 5. Функция сокращения объекта-дроби
 
-let drob1 = {
-    numerator: 10,
-    denominator: 3,   
+// task 2
+
+let f1 = {
+    numerator: 2,
+    denominator: 3,
 }
 
-let drob2 = {
-    numerator: 5,
-    denominator: 4,   
+let f2 = {
+    numerator: 2,
+    denominator: 6,
 }
 
-function addition(d1, d2){
-    let common = d1.denominator * d2.denominator;
+// добавление дробей
 
+function fractionAddition(f1, f2) {
+    let commonDenominator = f1.denominator * f2.denominator; // общий знаменатель
+
+    let updtDenominator1 = commonDenominator / f1.denominator; // дополнение к 1 дроби
+    let updtDenominator2 = commonDenominator / f2.denominator; // дополнение к 2 дроби
+
+    let updtNominator1 = f1.numerator * updtDenominator1; // ищем новый 1 дроби числитель
+    let updtNominator2 = f2.numerator * updtDenominator2; // ищем новый 2 дроби числитель
+
+
+    return { 
+        numerator: updtNominator1 + updtNominator2,
+        denominator: commonDenominator,
+    }
 }
+
+// разница дробей
+
+function fractionSubtraction(f1, f2) {
+    let commonDenominator = f1.denominator * f2.denominator; 
+
+    let updtDenominator1 = commonDenominator / f1.denominator;
+    let updtDenominator2 = commonDenominator / f2.denominator;
+
+    let updtNominator1 = f1.numerator * updtDenominator1;
+    let updtNominator2 = f2.numerator * updtDenominator2;
+
+
+    return { 
+        numerator: updtNominator1 - updtNominator2,
+        denominator: commonDenominator,
+    }
+}
+
+// умножение дробей
+
+function fractionMultiplication(f1, f2) {
+    return { 
+        numerator: f1.numerator * f2.numerator,
+        denominator: f1.denominator * f2.denominator,
+    }
+}
+
+// деление дробей
+
+function fractionDivision(f1, f2) {
+    return { 
+        numerator: f1.numerator * f2.denominator,
+        denominator: f1.denominator * f2.numerator,
+    }
+}
+
+let f3 = fractionDivision(f1, f2);
+
+alert(`${f3.numerator} / ${f3.denominator}`);
 
 
 // Создать объект, описывающий время (часы, минуты, секунды), и следующие функции для работы с этим объектом.
