@@ -1,48 +1,77 @@
-﻿//   Создать объект, описывающий автомобиль (производитель,
-//         модель, год выпуска, средняя скорость), и следующие функции
-//         для работы с этим объектом.
-//         1. Функция для вывода на экран информации об автомобиле.
-//         2. Функция для подсчета необходимого времени для преодоления переданного расстояния со средней скоростью.
-//         Учтите, что через каждые 4 часа дороги водителю необходимо делать перерыв на 1 час.
+// task 1
 
-// let car = {
-//     manafacturer: "bmw",
-//     model: "x5",
-//     years: 2005,
-//     avgSpeed: 160,
+let car = {
+    manufacturer: 'Audi',
+    model: 'A7',
+    year: 2019,
+    averageSpeed: '100',
+    
+    display: function() {
+        alert(`${this.manufacturer} ${this.model}; ${year} year of production; averageSpeed: ${this.averageSpeed}`);
+    },
 
-//     displayInfo: function() {
-//         alert(`manafacturer: ${this.manafacturer} ,model: ${this.model}, years:${this.years}, avgSpeed:${this.avgSpeed}`);
-//     },
+    wastedTimeTreveled: function(distance) {
+        let hours = distance / this.averageSpeed;
+        let lull = ~~(hours / 4);
 
-//     wastedTime: function(s){
-//         let hours = s / this.avgSpeed;
-//         let lull = ~~(hours / 4);
-//         alert(hours + lull);
-//     }
-// }
+        alert(hours + lull);
+    },
+}
 
-// car.displayInfo();
-// car.wastedTime(800);
-
-// Создать объект, хранящий в себе отдельно числитель и знаменатель дроби, и следующие функции для работы с этим объектом.
-// 1. Функция сложения 2-х объектов-дробей.
-// 2. Функция вычитания 2-х объектов-дробей.
-// 3. Функция умножения 2-х объектов-дробей.
-// 4. Функция деления 2-х объектов-дробей.
-// 5. Функция сокращения объекта-дроби
+// car.wastedTimeTreveled(800);
 
 // task 2
 
 let f1 = {
     numerator: 2,
     denominator: 3,
+
+    add: function(f2) {
+        let commonDenominator = this.denominator * f2.denominator; // общий знаменатель
+
+        let updtDenominator1 = commonDenominator / f1.denominator; // дополнение к 1 дроби
+        let updtDenominator2 = commonDenominator / f2.denominator; // дополнение к 2 дроби
+
+        let updtNominator1 = this.numerator * updtDenominator1; // ищем новый 1 дроби числитель
+        let updtNominator2 = f2.numerator * updtDenominator2; // ищем новый 2 дроби числитель
+
+
+        this.numerator = updtNominator1 + updtNominator2;
+        this.denominator = commonDenominator;
+    },
+
+    subtract: function(f2) {
+        let commonDenominator = this.denominator * f2.denominator; // общий знаменатель
+
+        let updtDenominator1 = commonDenominator / f1.denominator; // дополнение к 1 дроби
+        let updtDenominator2 = commonDenominator / f2.denominator; // дополнение к 2 дроби
+
+        let updtNominator1 = this.numerator * updtDenominator1; // ищем новый 1 дроби числитель
+        let updtNominator2 = f2.numerator * updtDenominator2; // ищем новый 2 дроби числитель
+
+
+        this.numerator = updtNominator1 - updtNominator2;
+        this.denominator = commonDenominator;
+    },
+
+    multiplicate: function (f2) {
+        this.numerator *= f2.numerator;
+        this.denominator *= f2.denominator;
+    },
+
+    divide: function (f2) {
+        this.numerator *= f2.numerator;
+        this.denominator *= f2.denominator;
+    }
 }
 
 let f2 = {
     numerator: 2,
     denominator: 6,
 }
+
+f1.multiplicate(f2);
+alert(f1.numerator + "/" + f1.denominator);
 
 // добавление дробей
 
@@ -100,41 +129,42 @@ function fractionDivision(f1, f2) {
 
 let f3 = fractionDivision(f1, f2);
 
-alert(`${f3.numerator} / ${f3.denominator}`);
+//alert(`${f3.numerator} / ${f3.denominator}`);
 
-
-
+// task 3
 
 let time = {
-    hou: 2,
-    min: 30,
-    sec: 70,
+    hh: 2,
+    mm: 30,
+    ss: 70,
 
     alertTime: function(){
-        if(this.sec >= 60){
-            this.sec -= 60;
-            this.min += 1;
+        if(this.ss >= 60){
+            this.ss -= 60;
+            this.mm += 1;
         }
 
-        if(this.min >= 60){
-            this.min -= 60;
-            this.hou += 1;
+        if(this.mm >= 60){
+            this.mm -= 60;
+            this.hh += 1;
         }
 
-        alert(`${this.hou}:${this.min}:${this.sec}`);
+        alert(`${this.hh}:${this.mm}:${this.ss}`);
     },
 
     timePlusHour: function(hour){
-        this.hou += hour;
+        this.hh += hh;
     },
 
-    timePlusMin: function(min){
-        this.min += min; 
+    timePlusMin: function(mm){
+        this.mm += mm; 
     },
 
     timePlusSec: function(sec){
-        this.sec += sec;
+        this.ss += ss;
     }
 }
 
-time.AlertTime();
+
+time.timePlusMin(70);
+//time.alertTime();
